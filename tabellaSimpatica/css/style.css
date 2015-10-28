@@ -1,0 +1,8 @@
+table > thead {
+    font-weight: bold;
+}
+
+table {
+    margin: auto;
+    width: 90%;
+}
