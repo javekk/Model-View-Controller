@@ -13,3 +13,7 @@ header {
     color: rgba(213, 229, 19, 0.87);
     text-align: center;
 }
+
+#form{
+    display: none;
+}

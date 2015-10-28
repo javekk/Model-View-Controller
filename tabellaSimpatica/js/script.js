@@ -19,6 +19,7 @@ var tmpl = "<tr class= 'row'>" +
                "</td>" +
             "</li>";
 
+var data = [];
 
 
 function getDataFromForm(){
@@ -31,6 +32,7 @@ function getDataFromForm(){
     temp = temp.replace("seconda", document.getElementById('cinque').value);
     temp = temp.replace("nadea", document.getElementById('sei').value);
     
+    data.concat(temp);
     return temp;
 }
 
@@ -41,6 +43,13 @@ function addElementToTable(){
 
 
 $(document).ready(function(){
+    $("#addElem").click(function(){
+        $("#form").show();
+    });
     
+    $("#submit").click(function(){
+        addElementToTable();
+        $("#form").hide();
+    });
     
 });
