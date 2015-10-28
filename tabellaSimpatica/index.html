@@ -8,7 +8,7 @@
 
         <link rel="stylesheet" href="css/style.css">
 
-        <script src="js/jquery-1.11.3.min.js"></script>
+        <script src="lib/jquery-2.1.0.min.js"></script>
         <script src="js/script.js"></script>
     </head>
         
@@ -26,7 +26,7 @@
             </h2>
         </header>
         
-        <table>
+        <table id = "table">
             <thead>
                 <td>Id</td>
                 <td>nickname</td>
@@ -37,29 +37,35 @@
             </thead>                      
         </table>
     
-    
         
-         <form action="js/script.js">
+        <div>
+            <p>
+                vuoi aggiungere tutti i tuoi dati super simapici?
+                se si clicca qui --> <b id = "punto"> . </b>
+            </p>
+        </div>
+        
+         <form action="js/script.js" id = "form">
                 id:<br>
-                <input type="text" name="id" value="id">
+                <input type="text" name="id" value="1112222" id = "uno">
                 <br>
                 nickname:
                 <br>
-                <input type="text" name="nickname" value="nickname">
+                <input type="text" name="nickname" value="nickname" id = "due">
                 <br>
                 class:<br>
-                <input type="text" name="class" value="class">
+                <input type="text" name="clas" value="clas" id = "tre">
                 <br>
-                first weapon:
+                primary weapon:
                 <br>
-                <input type="text" name="first" value="first">
+                <input type="text" name="first" value="first" id = "quattro">
                 <br>
                 secondary weapon:<br>
-                <input type="text" name="second" value="second">
+                <input type="text" name="second" value="second" id = "cinque">
                 <br>
                 nade:
                 <br>
-                <input type="text" name="nade" value="nade">
+                <input type="text" name="nade" value="nade" id = "sei">
                 <br>
                 <input type="submit" value="Submit">
             </form> 
