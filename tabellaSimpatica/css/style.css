@@ -6,3 +6,10 @@ table {
     margin: auto;
     width: 90%;
 }
+
+header {
+    background-color: dimgray;
+    text-decoration-color: fuchsia;
+    color: rgba(213, 229, 19, 0.87);
+    text-align: center;
+}
