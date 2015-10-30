@@ -1,25 +1,23 @@
-var tmpl = "<tr class= 'row'>" +
-               "<td id='id1'> " +
+var tmpl = "<tr class='row'>" +
+               "<td class='id1'> " +
                "    ida " +
                "</td>" +
-               "<td id='nickname1'> " +
+               "<td class='nickname1'> " +
                "    nicka " +
                "</td>" +
-               "<td id='class1'> " +
+               "<td class='class1'> " +
                "    classa " +
                "</td>" +
-               "<td id='first1'> " +
+               "<td class='first1'> " +
                "    firsta " +
                "</td>" +
-               "<td id='second1'> " +
+               "<td class='second1'> " +
                "    seconda " +
                "</td>" +
-               "<td id='nade1'> " +
+               "<td class='nade1'> " +
                "    nadea " +
                "</td>" +
             "</li>";
-
-var data = [];
 
 
 function getDataFromForm(){
@@ -31,8 +29,7 @@ function getDataFromForm(){
     temp = temp.replace("firsta", document.getElementById('quattro').value);
     temp = temp.replace("seconda", document.getElementById('cinque').value);
     temp = temp.replace("nadea", document.getElementById('sei').value);
-    
-    data.concat(temp);
+
     return temp;
 }
 
@@ -40,7 +37,6 @@ function addElementToTable(){
     var elem = getDataFromForm();
     $("#table").append(elem);
 }
-
 
 $(document).ready(function(){
     $("#addElem").click(function(){
@@ -50,6 +46,24 @@ $(document).ready(function(){
     $("#submit").click(function(){
         addElementToTable();
         $("#form").hide();
+    });
+    
+    $("table").delegate("tr.row", "click", function(){
+        var target =  event.target; 
+        var parent = $(target).parent()[0];
+        $(parent).addClass("clicked"); 
+        $(parent).removeClass("row");     
+    });
+    
+    $("table").delegate("tr.clicked", "click", function(){                
+        var target = event.target; 
+        var parent = $(target).parent()[0];
+        $(parent).addClass("row"); 
+        $(parent).removeClass("clicked");    
+    });
+    
+    $("#removeElem").click(function(){
+        $(".clicked").remove();
     });
     
 });
