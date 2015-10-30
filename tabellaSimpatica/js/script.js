@@ -33,21 +33,26 @@ function getDataFromForm(){
     return temp;
 }
 
+
+/*this function get data from form and append those data in table as html */
 function addElementToTable(){
     var elem = getDataFromForm();
     $("#table").append(elem);
 }
 
 $(document).ready(function(){
+    /*this function  show the form for insert of data when you click the button add element*/
     $("#addElem").click(function(){
         $("#form").show();
     });
     
+    /*this function add  the element in the table and hide form */
     $("#submit").click(function(){
         addElementToTable();
         $("#form").hide();
     });
     
+    /*This function get the clicked entry in table, and get it parent (it is :row), and change it class from clicked to row(not clicked)  */
     $("table").delegate("tr.row", "click", function(){
         var target =  event.target; 
         var parent = $(target).parent()[0];
@@ -55,6 +60,7 @@ $(document).ready(function(){
         $(parent).removeClass("row");     
     });
     
+    /*his function get the clicked entry in table, and get it parent (it is :row), and change it class from not clicked to clicked*/
     $("table").delegate("tr.clicked", "click", function(){                
         var target = event.target; 
         var parent = $(target).parent()[0];
@@ -62,6 +68,7 @@ $(document).ready(function(){
         $(parent).removeClass("clicked");    
     });
     
+    /*this function remove the selected row*/
     $("#removeElem").click(function(){
         $(".clicked").remove();
     });
