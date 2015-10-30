@@ -20,6 +20,8 @@ var tmpl = "<tr class='row'>" +
             "</li>";
 
 
+
+
 function getDataFromForm(){
     var temp = tmpl;
     
@@ -33,6 +35,45 @@ function getDataFromForm(){
     return temp;
 }
 
+/*prende i valori dal form per la ricerca, ciclo su ogni riga della tabella per verificare se una riga soddisfa tutti i requisiti, se lo fa la 
+  seleziono */
+function Search(){
+    
+    var id = document.getElementById('sette').value;
+    var nickname =  document.getElementById('otto').value;
+    var clas =  document.getElementById('nove').value;
+    var first =  document.getElementById('dieci').value;
+    var second =  document.getElementById('undici').value;
+    var nade =  document.getElementById('dodici').value;
+    
+    for(var i = 1; i < ($('#table tr:last').index() + 2); i++){
+        var $primo = $("#table tr:eq(" + i + ") td:first-child");
+        var $secondo = $("#table tr:eq(" + i + ") td:eq(1)");
+        var $terzo = $("#table tr:eq(" + i + ") td:eq(2)");
+        var $quarto = $("#table tr:eq(" + i + ") td:eq(3)");
+        var $quinto = $("#table tr:eq(" + i + ") td:eq(4)");
+        var $sesto = $("#table tr:eq(" + i + ") td:eq(5)"); 
+        
+        if($primo.text().trim() == id || id== ""){
+            if($secondo.text().trim() == nickname || nickname == ""){
+                if($terzo.text().trim() == clas || clas == ""){
+                    if($quarto.text().trim() == first || first == ""){
+                        if($quinto.text().trim() == second || second == ""){
+                            if($sesto.text().trim() == nade || nade == ""){
+                                if($("#table tr:eq("+ i +")").attr("class") == "row"){
+                                    $("#table tr:eq("+ i +")").removeClass("row");
+                                    $("#table tr:eq("+ i +")").addClass("clicked");
+                                }                               
+                            }
+                        }
+                    }    
+                }
+            }    
+        }
+    }
+    
+}
+
 
 /*this function get data from form and append those data in table as html */
 function addElementToTable(){
@@ -41,6 +82,17 @@ function addElementToTable(){
 }
 
 $(document).ready(function(){
+    
+    /*aggiunge gli input di prova*/
+   
+    $("#table").append(tmpl1);
+    $("#table").append(tmpl2);
+    $("#table").append(tmpl3);
+    $("#table").append(tmpl4);
+    $("#table").append(tmpl5);
+    $("#table").append(tmpl6);
+    
+    
     /*this function  show the form for insert of data when you click the button add element*/
     $("#addElem").click(function(){
         $("#form").show();
@@ -72,5 +124,16 @@ $(document).ready(function(){
     $("#removeElem").click(function(){
         $(".clicked").remove();
     });
+    
+    /* this function show the form for search */
+    $("#cercaElem").click(function(){
+        $("#form2").show();
+    });
+    
+    $("#cerca").click(function(){
+        Search();
+        //$("#form2").hide();
+    });
+    
     
 });

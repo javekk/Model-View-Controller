@@ -26,6 +26,10 @@ header {
     display: none;
 }
 
+#form2{
+    display: none;
+}
+
 #button{
     margin: auto;
     width: 30%;
