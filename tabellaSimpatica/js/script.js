@@ -132,7 +132,7 @@ $(document).ready(function(){
     
     $("#cerca").click(function(){
         Search();
-        //$("#form2").hide();
+        $("#form2").hide();
     });
     
     
