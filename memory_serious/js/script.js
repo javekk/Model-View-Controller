@@ -6,10 +6,11 @@ var tmp =   "<li class='hidden'>"
           + "</li>";
 
 
-
-
-
-
+var prhesa=0;
+var igno=0;
+var cartaOld;
+var cartaNew;
+var cercoCoppia = false;
 var mySet = new Set();
 var apSet = new Set();
 var myArray = [];
@@ -55,19 +56,62 @@ function clean(){
     $("li").remove();
 }
 
-var click;
+
+function checkCoppia(carta) {
+    if (!cercoCoppia) {
+        cercoCoppia = true;
+        cartaOld = carta;
+        carta = null;
+    }
+    else {
+        cartaNew=carta;
+        var $cartaNewImg = ($(cartaNew).find("img").attr("src"));
+        var $cartaOldImg = ($(cartaOld).find("img").attr("src"));
+        if($cartaNewImg == $cartaOldImg) {
+            prhesa++;
+            alert("UGUALI");
+            cercoCoppia=false;
+            cartaOld=null;
+            cartaNew=null;
+            if (prhesa==numberOfCards) {
+                alert("Ma bravoh");
+                clean();
+                $(".table").append("<li><h1>HAI CAZZO DI VINTO</h1></li>");
+            }
+        }
+        else {
+            igno++;
+            if (igno>=4) {
+                alert("Ma daii");
+                clean();
+                $(".table").append("<li><h1>SEI PEGGIO DEL DRAGO DI CERTO!</h1></li>");
+                
+            }
+            else{
+                alert("Eh, spiace, hai ancora: " +(4-igno) + " prove");
+                cercoCoppia = false;
+                $(cartaNew).removeClass("show");
+                $(cartaNew).addClass("hidden");
+                $(cartaOld).removeClass("show");
+                $(cartaOld).addClass("hidden"); 
+                cartaOld=null;
+                cartaNew=null;                    
+            }
+        }
+    }
+}
 
 $(document).ready(function(){  
     
-    $(document).click(function(){
-        click = $(event.target);
-    });
     $("#btn-gen").click(function(){
+        igno=0;
+        prhesa=0;
         generate();
         $('li').click(function(){
             var target= event.target;
             $(target).removeClass("hidden");
             $(target).addClass("show");
+            checkCoppia(target);
         }); 
     });  
 });

@@ -1,10 +1,11 @@
 .table{
     list-style-type: none;
+    display: inline-block;
 }
 
 .table  li{
-    height: 200px;
-    width: 200px;  
+    height: 201px;
+    width: 201px;  
     display: inline-block;
     margin: 20px;
     border-radius: 15px;
@@ -16,10 +17,8 @@
 
 .hidden img{
     display: none;
-    height: 190px;
-    width: 190px;
 }
 
-.show{
-    
+.show img{
+    display: table-cell;
 }
