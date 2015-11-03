@@ -112,7 +112,7 @@ $(document).ready(function(){
         $(parent).removeClass("row");     
     });
     
-    /*his function get the clicked entry in table, and get it parent (it is :row), and change it class from not clicked to clicked*/
+    /*this function get the clicked entry in table, and get it parent (it is :row), and change it class from not clicked to clicked*/
     $("table").delegate("tr.clicked", "click", function(){                
         var target = event.target; 
         var parent = $(target).parent()[0];
