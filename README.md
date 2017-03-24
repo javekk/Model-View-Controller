@@ -1,5 +1,7 @@
-# Two different type of site
+
 # Model View Controller 
+
+Two different type of size
 
 Memory serius: meory with time and points
 
